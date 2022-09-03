@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input } from 'reactstrap';
 import axios from "axios"
+import { API_URL } from "../helper";
 
 function AddSchedule() {
 
@@ -17,17 +18,17 @@ function AddSchedule() {
             keterangan: keterangan
         }
         console.log(data)
-        // if (tanggal === "" || jamMulai === "" || jamBerakhir === "" || keterangan === "") {
-        //     alert("data tidak boleh kosong")
-        // } else {
-        //     console.log(data)
-        //     axios.post(`http://localhost:3000/schedule`, data)
-        //         .then((res) => {
-        //             alert("berhasil add schedule")
-        //         }).catch((err) => {
-        //             console.log(err)
-        //         })
-        // }
+        if (tanggal === "" || jamMulai === "" || jamBerakhir === "" || keterangan === "") {
+            alert("data tidak boleh kosong")
+        } else {
+            console.log(data)
+            axios.post(`${API_URL}/schedule`, data)
+                .then((res) => {
+                    alert("berhasil add schedule")
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
     }
 
     return (

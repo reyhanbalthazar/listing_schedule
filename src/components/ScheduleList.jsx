@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import { API_URL } from "../helper";
 
 function ScheduleList() {
 
@@ -11,7 +12,7 @@ function ScheduleList() {
     }, [])
 
     const getData = () => {
-        axios.get(`http://localhost:3000/schedule?_sort=tanggal,jamMulai&_order=asc,asc`)
+        axios.get(`${API_URL}/schedule?_sort=tanggal,jamMulai&_order=asc,asc`)
             .then((res) => {
                 setSchedule(res.data)
             }).catch((err) => {
